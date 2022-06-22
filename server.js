@@ -16,6 +16,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 // runs when a client connects.
 ioS.on('connection', (socket)=>{
       console.log('New Connection');
+      socket.emit('message', 'Welcome To TCS, message from server');
+      // this emit will be caught in client side js that is main.js present in public folder.
+
+
+      // welcome => send message from server when a user connects.
+      socket.broadcast.emit('message', 'A user has joined the chat'); // this will emit to everybody excepts the user that has logged in or connected.
+
+      //welcome => send message from server when a user disconnects.
+      socket.on('disconnect', (message)=>{
+            ioS.emit('message', 'A user has left the chat');
+      });
+      // emiting the message from the form to the server.
+      socket.on('chat-message', (message)=>{
+            // console.log(message);
+            ioS.emit('message', message);
+      })
 })
 const PORT = 3000;
 
