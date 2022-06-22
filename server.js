@@ -5,7 +5,7 @@ const http = require('http');
 const socket = require('socket.io');
 
 const formatMessage = require('./utils/messages');
-const {userJoin, getCurrentUser } = require('./utils/users');
+const {userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 const { text } = require('express');
 
 const app = express();
@@ -25,20 +25,23 @@ ioS.on('connection', (socket)=>{
             socket.join(user.room);
 
 
-            socket.to(user.room).emit('message', formatMessage(botName, 'Welcome To TCS, message from server'));
+            socket.emit('message', formatMessage(botName, 'Welcome To TCS, message from server'));
             // this emit will be caught in client side js that is main.js present in public folder.
             // welcome => send message from server when a user connects.
             socket.broadcast.to(user.room).emit('message',formatMessage(botName, ` ${user.username} has joined the chat`)); // this will emit to everybody excepts the user that has logged in or connected.
+
+
+            // sending users in room details 
+            ioS.to(user.room).emit('roomUsers', {
+                 room: user.room,
+                 users: getRoomUsers(user.room) 
+            });
       
       });
 
 
       console.log('New Connection');
 
-      //disconnect => send message from server when a user disconnects.
-      socket.on('disconnect', (message)=>{
-            ioS.emit('message', formatMessage(botName, ` ${user.username} has left the chat`));
-      });
       // emiting the message from the form to the server.
       socket.on('chat-message', (message)=>{
             const user = getCurrentUser(socket.id);
@@ -46,6 +49,19 @@ ioS.on('connection', (socket)=>{
             // ioS.emit('message', formatMessage(user.username,message));
             ioS.to(user.room).emit('message', formatMessage(user.username, message));
       });
+
+      //disconnect => send message from server when a user disconnects.
+      socket.on('disconnect', (message)=>{
+            const user = userLeave(socket.id);
+            if(user){
+                  ioS.to(user.room).emit('message', formatMessage(botName, ` ${user.username} has left the chat`));
+                  ioS.to(user.room).emit('roomUsers', {
+                        room: user.room,
+                        users: getRoomUsers(user.room) 
+                   });
+            }
+      });
+      
       
 })
 const PORT = 3000;
