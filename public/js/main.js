@@ -66,11 +66,14 @@ function outputRoomNames(room){
 
 // add users to DOM using fucntion
 function outputUserNames(users) {
-      userList.innerHTML = '';
-      users.forEach((user) => {
-            const li = document.createElement('li');
-            li.innerText = user.username;
-            userList.appendChild(li);
-          });
+      // userList.innerHTML = '';
+      // users.forEach((user) => {
+      //       const li = document.createElement('li');
+      //       li.innerText = user.username;
+      //       userList.appendChild(li);
+      //     });
+
+
+      userList.innerHTML = `${users.map(user => `<li>${user.username}</li>`).join('')}`
       
     }
