@@ -12,32 +12,56 @@
 </head>
 
 <body>
-      <div class="join-container">
-            <header class="join-header">
-                  <h1><i class="fas fa-smile"></i> TempCodingServers-(TCS)</h1>
-            </header>
-            <main class="join-main">
-                  <form action="chat.html">
-                        <div class="form-control">
-                              <label for="username"><span class="U">U</span>sername</label>
-                              <input type="text" name="username" id="username" placeholder="Enter username..."
-                                    required />
+            <div class="join-container">
+                  <header class="join-header">
+                        <h1> TempCodingServers</h1>
+                  </header>
+                  <main class="join-main">
+                        <form action="chat.html">
+                              <div class="form-control">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" placeholder="Enter username..."
+                                          required />
+                              </div>
+                              <div class="form-control">
+                                    <label for="room">Room</label>
+                                    <div class="select-div">
+                                          <select name="room" id="room">
+                                                <option value="JavaScript">JavaScript</option>
+                                                <option value="Python">Python</option>
+                                                <option value="PHP">PHP</option>
+                                                <option value="C++">C++</option>
+                                                <option value="C">C</option>
+                                                <option value="Java">Java</option>
+                                          </select>
+                                    </div>
+                              </div>
+                              <button type="submit" class="btn">Join Chat</button>
+                        </form>
+                  </main>
+            </div>
+            <section class="content">
+                  <div id="about-site-divs">
+                        <div class="about-site">
+                             <p class="text">
+                              A <a class="socket-link" href="https://socket.io/">socket.io</a> based Chat Application, which doesn't stores your chats in any manner.
+                              Can be used to communicate globally. 
+                             </p>
+                             <p>Join Any Provided Server, Communicate with other programmers out there.</p>
                         </div>
-                        <div class="form-control">
-                              <label for="room">Room</label>
-                              <select name="room" id="room">
-                                    <option value="JavaScript">JavaScript</option>
-                                    <option value="Python">Python</option>
-                                    <option value="PHP">PHP</option>
-                                    <option value="C#">C#</option>
-                                    <option value="Ruby">Ruby</option>
-                                    <option value="Java">Java</option>
-                              </select>
-                        </div>
-                        <button type="submit" class="btn">Join Chat</button>
-                  </form>
-            </main>
-      </div>
+                  </div>
+            <div id="content-container">
+                  <div class="my-details">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur voluptatem dolore dicta obcaecati ipsum ullam pariatur impedit amet similique, alias eveniet! Tempora voluptatum recusandae rerum sint, officia amet fugit nulla.
+                  </div>
+                  <div class="my-details">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur voluptatem dolore dicta obcaecati ipsum ullam pariatur impedit amet similique, alias eveniet! Tempora voluptatum recusandae rerum sint, officia amet fugit nulla.
+                  </div>
+                  <div class="my-details">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur voluptatem dolore dicta obcaecati ipsum ullam pariatur impedit amet similique, alias eveniet! Tempora voluptatum recusandae rerum sint, officia amet fugit nulla.
+                  </div>
+            </div>
+            </section>
 </body>
 
 </html>

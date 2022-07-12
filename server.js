@@ -4,19 +4,18 @@ const path = require('path');
 const http = require('http');
 // under the hood socket.io uses http createserver function, so we require the same function for using with socket.io that is why i have included the http module.
 const socket = require('socket.io');
-
 const formatMessage = require('./utils/messages');
 const {userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 const { text } = require('express');
 
 const app = express();
-const server = http.createServer(app);
-const ioS = socket(server);
+app.use(express.static(path.join(__dirname, 'res')));
+const server = http.createServer(app);//
+const ioS = socket(server);//
 const botName = 'TCS Bot'
 
 // setting the public folder as static folder.
 app.use(express.static(path.join(__dirname, 'public')));
-
 // runs when a client connects.
 ioS.on('connection', (socket)=>{
 
