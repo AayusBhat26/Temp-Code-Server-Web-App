@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 /* custom scrollbar */
 ::-webkit-scrollbar{
-	width: 12px;
+	width: 5px;
 	/* display: none; */
 	/* background-color: rgb(19, 180, 143); */
 	background-image: linear-gradient(to right, #232526,#414345);
@@ -75,28 +75,39 @@ a {
 	border-radius: 5px;
 }
 
-/* Chat Page */
 .join-main{
 	border-radius: 10px;
 	margin-top: -100px;
 	display: grid;
 	place-items: center;
 }
+
+
+/* Chat Page */
+.main-chat-container{
+	display: grid;
+	place-items: center;
+}
 .chat-container {
+
 	background: #fff;
 	margin: 30px auto;
 	overflow: hidden;
 }
 
 .chat-header {
-	background-color: rgb(34, 45, 15);
+	
+	background-color: red;
 	color: #fff;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	/* border-top-left-radius: 5px;
+	border-top-right-radius: 5px; */
 	padding: 15px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+.chat-header h1{
+	font-size: 10px;
 }
 
 .chat-main {
@@ -108,7 +119,7 @@ a {
 	border-bottom: 2px solid black;
 	background: #e6e9ff;
 	color: #7386ff;
-	padding: 20px 20px 60px;
+	padding: 30px 30px 70px;
 	overflow-y: scroll;
 }
 
@@ -128,8 +139,9 @@ a {
 }
 
 .chat-messages {
+	width: 60vw;
 	padding: 50px;
-	max-height: 500px;
+	max-height: 80vh;
 	overflow-y: scroll;
 }
 
@@ -252,11 +264,14 @@ a {
 	text-align: center;
 	height: 25vh;
 	box-shadow: 10px 5px 5px rgba(56, 197, 219, 0.3);
-	font-size: 20px;
+	font-size: 15px;
 	border-radius: 10px;
 }
 
-
+.owner{
+	font-size: 10px;
+	color: dimgrey;
+}
 @media (max-width: 700px) {
 	.join-main{
 		width: 100%;
